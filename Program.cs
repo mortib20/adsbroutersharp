@@ -27,11 +27,11 @@ namespace ADSBRouterSharpv2
 
             var input = TcpInput.CreateInput(IPAddress.Any, 30004);
 
-            input.NewData += async (byte[] buffer) =>
+            input.NewData += (byte[] buffer, int length) =>
             {
-                outputs.ForEach(async x =>
+                outputs.ForEach(x =>
                 {
-                    await x.SendAsync(buffer);
+                    x.SendAsync(buffer, length);
                 });
             };
 

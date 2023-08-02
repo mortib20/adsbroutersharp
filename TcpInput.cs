@@ -3,14 +3,14 @@ using System.Net.Sockets;
 
 namespace ADSBRouterSharpv2
 {
-    delegate void NewData(byte[] buffer);
+    delegate void NewData(byte[] buffer, int length);
 
     internal class TcpInput
     {
         readonly Logger _logger;
         readonly TcpListener _listener;
 
-        public event NewData NewData;
+        public event NewData? NewData;
 
         public TcpInput(IPAddress address, int port)
         {
@@ -75,7 +75,7 @@ namespace ADSBRouterSharpv2
                         break;
                     }
 
-                    NewData?.Invoke(buffer);
+                    NewData?.Invoke(buffer, length);
                 }
 
                 _logger.Info($"Client disconnected {client.Client.RemoteEndPoint}");

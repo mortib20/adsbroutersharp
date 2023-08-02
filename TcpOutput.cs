@@ -51,7 +51,7 @@ namespace ADSBRouterSharpv2
             _client.Close();
         }
 
-        public async Task SendAsync(byte[] buffer)
+        public void SendAsync(byte[] buffer, int length)
         {
             if (isReconnecting) return;
 
@@ -62,7 +62,7 @@ namespace ADSBRouterSharpv2
 
             try
             {
-                await _client.Client.SendAsync(buffer);
+                _client.Client.Send(buffer, length, SocketFlags.None);
             }
             catch (SocketException ex)
             {
