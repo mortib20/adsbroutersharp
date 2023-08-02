@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-
-from alpine:latest as build
+﻿from alpine:latest as build
 WORKDIR / build
 COPY. .
 RUN apk add --no-cache dotnet7-sdk
