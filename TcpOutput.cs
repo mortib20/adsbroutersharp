@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Threading;
 
-namespace ADSBRouterSharpv2
+namespace ADSBRouterSharp
 {
     internal class TcpOutput
     {

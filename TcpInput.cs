@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 
-namespace ADSBRouterSharpv2
+namespace ADSBRouterSharp
 {
     delegate void NewData(byte[] buffer, int length);
 
@@ -83,9 +83,9 @@ namespace ADSBRouterSharpv2
             catch (OperationCanceledException) { } // Ignore this
         }
 
-        public static TcpInput CreateInput(IPAddress addr, int port)
+        public static TcpInput CreateInput(IPAddress address, int port)
         {
-            return new(addr, port);
+            return new(address, port);
         }
     }
 }
